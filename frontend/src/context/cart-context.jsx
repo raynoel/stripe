@@ -12,7 +12,8 @@ const initialState = { cartItems: [], itemCount: 0, total: 0 }                  
 const CartContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);                          // Array destructuring: assigne la valeur de 'initialState' à 'state' et 'cartReducer' à la fct 'dispatch'
 
-  const contextValues = { ...state }
+  const addProduct = (product) => ({ type: 'ADD_ITEM', payload: product })                  // Défini une fct pour modifier le store
+  const contextValues = { ...state, addProduct }
   
   return (
     <CartContext.Provider value={ contextValues }>
