@@ -7,7 +7,7 @@ import shoppingBag from '../../assets/shopping-bag.png';
 import './cart-icon.scss';
 
 const CartIcon = () => {
-  const { itemCount } = useContext(CartContext)                               // Obtient le nb d'article contenus dans le cart
+  const { itemCount } = useContext(CartContext)                                         // Obtient le nb d'article contenus dans le cart
 
   return (
     <div className='cart-container'>

@@ -13,7 +13,7 @@ export const sumItems = (cartItems) => {
   }
 }
 
-// Élabore les fcts définies dans CartContext
+// Élabore les fcts pour modifier CartContext
 const cartReducer = (state, action) => {
   switch(action.type) {
     case 'ADD_ITEM':
