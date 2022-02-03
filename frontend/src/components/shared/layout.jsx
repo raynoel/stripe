@@ -1,6 +1,5 @@
-
-// Wrapper utilisé pour incorporer le Header et Footer à un composant
-// Utile pour permettre l'affichage du Header et Footer optionnel
+// Wrapper importé dans différents composants pour insérer le Header et Footer
+// Utile pour afficher du Header et Footer optionnel
 import React from 'react';
 import Header from '../header/header';
 import Footer from '../footer/footer';
