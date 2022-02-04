@@ -9,12 +9,12 @@ import './single-product.scss';
 
 const SingleProduct = ({ match, history: { push } }) => {                   // Match obtient les params passé dans le url; history redirige
   const { products } = useContext(ProductsContext);                         // Obtient la liste des produits 
-  const { cartItems, addProduct} = useContext(CartContext);                 // importe CartItems + les fcts
+  const { cartItems, addProduct, increase} = useContext(CartContext);       // importe CartItems + les fcts
   const { id } = match.params;                                              // Extrait le 'id' du URL
   const [ product, setProduct ] = useState(null);                           // Obtient l'obj contenant le produit à afficher
   const itemInCart = isInCart(product, cartItems);
 
-  // useEffect utilisé pour obtenir les infos du sac de la DB lorsque le composant mount, rafraichi si id, product, products, push est modifié
+  // useEffect obtient les infos du produit lorsque le composant mount, rafraichi si id, product, products, push est modifié
   useEffect(() => {
     const product = products.find(item => Number(item.id) === Number(id));  // Cherche le produit 
     if (!product) return push('/shop');
@@ -38,7 +38,7 @@ const SingleProduct = ({ match, history: { push } }) => {                   // M
           <p>${ price }</p>
           <div className='add-to-cart-btns'>
             { !itemInCart && <button onClick={() => addProduct(product)} className='button is-black nomad-btn' id='btn-white-outline'>ADD TO CART</button> }
-            {  itemInCart && <button onClick={() => {}}   className='button is-white nomad-btn' id='btn-white-outline'>ADD MORE</button> }
+            {  itemInCart && <button onClick={() => increase(product)}   className='button is-white nomad-btn' id='btn-white-outline'>ADD MORE</button> }
             <button className='button is-black nomad-btn' id='btn-white-outline'>PROCEED TO CHECKOUT</button>
           </div>
           <div className='product-description'>

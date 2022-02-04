@@ -21,6 +21,12 @@ const cartReducer = (state, action) => {
         state.cartItems.push({ ...action.payload, quantity: 1, })                           // Ajoute un item à la liste cartItems
       }
       return { ...state, cartItems: [...state.cartItems], ...sumItems(state.cartItems) }    // Retourne le store CartContext modifié
+
+    case 'INCREASE':
+      const productIndex = state.cartItems.findIndex(item => item.id === action.payload.id);
+      state.cartItems[productIndex].quantity++;
+      return { ...state, cartItems: [...state.cartItems], ...sumItems(state.cartItems), } 
+
     default: 
       return state
   }

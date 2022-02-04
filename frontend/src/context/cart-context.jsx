@@ -13,8 +13,9 @@ const CartContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);                          // Array destructuring: assigne la valeur de 'initialState' à 'state' et 'cartReducer' à la fct 'dispatch'
 
   const addProduct    = ( product ) => dispatch({ type: 'ADD_ITEM', payload: product });    // fct pour ajouter au simili-store
-  
-  const contextValues = { ...state, addProduct }
+  const increase      = ( product ) => dispatch({ type: 'INCREASE', payload: product });    // fct pour ajouter
+
+  const contextValues = { ...state, addProduct, increase }
   
   return (
     <CartContext.Provider value={ contextValues }>
